@@ -64,12 +64,12 @@ contract marketPlace is ERC721URIStorage {
     }
 
     function buyNFT(uint256 tokenId) public payable {
-        Advertising memory Advertising = adverts[tokenId];
+        Advertising memory advertising = adverts[tokenId];
 
-        if (!Advertising.isAdvert) revert NFTNotForSale();
-        if (msg.value != Advertising.price) revert IncorrectPrice();
+        if (!advertising.isAdvert) revert NFTNotForSale();
+        if (msg.value != advertising.price) revert IncorrectPrice();
 
-        address seller = Advertising.seller;
+        address seller = advertising.seller;
         
         // Transfer the NFT to the buyer
         _transfer(seller, msg.sender, tokenId);
@@ -85,8 +85,8 @@ contract marketPlace is ERC721URIStorage {
     }
 
     function getAdvert(uint256 tokenId) public view returns (address seller, uint256 price, bool isAdvert) {
-        Advertising memory Advertising = adverts[tokenId];
-        return (Advertising.seller, Advertising.price, Advertising.isAdvert);
+        Advertising memory advertising = adverts[tokenId];
+        return (advertising.seller, advertising.price, advertising.isAdvert);
     }
 
     function getAllAdverts() public view returns (Advertising[] memory) {
