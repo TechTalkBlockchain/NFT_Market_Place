@@ -69,7 +69,7 @@ Replace `sepolia` with the network of your choice.
   - Mints a new NFT with metadata stored in the `tokenURI`.
   - Only the contract owner can mint NFTs.
 
-- **`listNFT(uint256 tokenId, uint256 price)`**: 
+- **`AdvertisedNFT(uint256 tokenId, uint256 price)`**: 
   - Lists an NFT owned by the caller for sale at the specified price.
   - The NFT owner must be the caller.
 
@@ -77,14 +77,14 @@ Replace `sepolia` with the network of your choice.
   - Allows a user to buy an NFT by sending the required price in ETH.
   - Transfers the ownership of the NFT to the buyer and sends the payment to the seller.
 
-- **`delistNFT(uint256 tokenId)`**: 
+- **`RemoveNFT(uint256 tokenId)`**: 
   - Removes an NFT from being listed for sale.
   - Only the owner of the NFT can delist it.
 
-- **`getListing(uint256 tokenId) returns (address seller, uint256 price, bool isListed)`**: 
+- **`getAdvertised(uint256 tokenId) returns (address seller, uint256 price, bool isListed)`**: 
   - Returns the listing details for a given token ID.
 
-- **`isNFTListed(uint256 tokenId) returns (bool)`**: 
+- **`isNFTAdvertised(uint256 tokenId) returns (bool)`**: 
   - Returns whether the NFT is currently listed for sale.
 
 - **`transferOwnership(address newOwner)`**: 
@@ -93,7 +93,7 @@ Replace `sepolia` with the network of your choice.
 ### Events
 
 - **`NFTMinted(uint256 tokenId, address owner)`**: Emitted when an NFT is successfully minted.
-- **`NFTListed(uint256 tokenId, uint256 price)`**: Emitted when an NFT is listed for sale.
+- **`NFTAdvertised(uint256 tokenId, uint256 price)`**: Emitted when an NFT is listed for sale.
 - **`NFTBought(uint256 tokenId, address buyer, uint256 price)`**: Emitted when an NFT is purchased.
 
 ## Security Considerations
